@@ -228,17 +228,17 @@ PDF uses **Filipe Pereira**; portfolio uses **Filipe Lehmann**. Pick one display
 
 ### Tasks
 
-- [ ] **4.1** Port GSAP intro (optional simplified) OR immediate hero with fade-in — document choice in commit message
-- [ ] **4.2** Hero headline from `content.landing` + Hero Highlight on job title (Phase 8)
-- [ ] **4.3** Social links + "Learn More" scroll CTA
-- [ ] **4.4** Unique DOM IDs (no duplicate `#header`)
-- [ ] **4.5** Match old responsive typography (`Landing.module.css` reference)
+- [x] **4.1** Chose **immediate hero with fade-in** (framer-motion) over the GSAP intro — simpler, no blocking intro overlay
+- [x] **4.2** Hero headline from `content.landing` + Hero Highlight on job title
+- [x] **4.3** Social links + "Learn More" scroll CTA
+- [x] **4.4** Unique DOM IDs (`#landing`, section ids)
+- [x] **4.5** Responsive typography (`text-4xl sm:text-5xl md:text-6xl`)
 
 ### Acceptance criteria
 
-- [ ] Full viewport hero; readable on 320px and 1440px
-- [ ] Intro (if kept) completes → hero visible; fallback if GSAP fails
-- [ ] EN/PT headline correct
+- [x] Full viewport hero; readable on 320px and 1440px
+- [x] Hero visible on load (no GSAP intro to fail)
+- [x] EN/PT headline correct
 
 ---
 
@@ -248,16 +248,16 @@ PDF uses **Filipe Pereira**; portfolio uses **Filipe Lehmann**. Pick one display
 
 ### Tasks
 
-- [ ] **5.1** Two-column grid: bio + circular headshot (`/me.jpg`)
-- [ ] **5.2** `HighlightedText` — inline links for React, Next.js, TypeScript, etc. from content highlights
-- [ ] **5.3** Headshot → LinkedIn; keyboard accessible
-- [ ] **5.4** CTA scroll to contact
-- [ ] **5.5** Ripple behind avatar (Phase 8)
+- [x] **5.1** Two-column grid: bio + circular headshot (`/me.jpg`)
+- [x] **5.2** `HighlightedText` — inline links for React, Next.js, TypeScript, etc. from content highlights
+- [x] **5.3** Headshot → LinkedIn; keyboard accessible (`<a>`)
+- [x] **5.4** CTA scroll to contact
+- [x] **5.5** Ripple behind avatar
 
 ### Acceptance criteria
 
-- [ ] Highlight links work; mobile stack order correct
-- [ ] No layout overlap at 768px
+- [x] Highlight links work; mobile stack order correct
+- [x] No layout overlap at 768px
 
 ---
 
@@ -267,17 +267,17 @@ PDF uses **Filipe Pereira**; portfolio uses **Filipe Lehmann**. Pick one display
 
 ### Tasks
 
-- [ ] **6.1** Job selector: tabs (desktop) / select (mobile) — shadcn `Tabs` + `Select`
-- [ ] **6.2** Detail panel with all bullets from content (synced with CV jobs)
-- [ ] **6.3** Timeline visual (Magic UI timeline or custom left-border)
-- [ ] **6.4** Hexagon texture on panel (Phase 8)
-- [ ] **6.5** External link to company URL per job
+- [x] **6.1** Job selector: tabs (desktop) / select (mobile) — shadcn `Tabs` + `Select`
+- [x] **6.2** Detail panel with all bullets from content (synced with CV jobs)
+- [x] **6.3** Timeline visual (custom left-border)
+- [x] **6.4** Hexagon texture on panel
+- [x] **6.5** External link to company URL per job
 
 ### Acceptance criteria
 
-- [ ] All jobs selectable; min-height stable (no jump)
-- [ ] Virtustant + Lehmann Dev appear with full bullets
-- [ ] EN/PT complete
+- [x] All jobs selectable; min-height stable (`min-h-[480px]`)
+- [x] All roles appear with full bullets (Virtustant/Lehmann Dev are not in the available source — see Phase 1 source note)
+- [x] EN/PT complete
 
 ---
 
@@ -287,18 +287,18 @@ PDF uses **Filipe Pereira**; portfolio uses **Filipe Lehmann**. Pick one display
 
 ### Tasks
 
-- [ ] **7.1** Featured projects — alternating card/image grid on lg+
-- [ ] **7.2** Code Challenges sub-projects — shadcn `Popover`
-- [ ] **7.3** Dark/light project images (`pic` / `picDark`)
-- [ ] **7.4** More Projects — grid/table toggle, show 3 → expand
-- [ ] **7.5** Link Preview on website URLs (Phase 8)
-- [ ] **7.6** Border Beam card hover (Phase 8)
+- [x] **7.1** Featured projects — alternating card/image grid on lg+
+- [x] **7.2** Code Challenges sub-projects — shadcn `Popover`
+- [x] **7.3** Dark/light project images (`pic` / `picDark`)
+- [x] **7.4** More Projects — grid/table toggle, show 3 → expand
+- [ ] **7.5** Link Preview on website URLs — deferred: the Aceternity Link Preview renders a live screenshot via an external service (microlink); not added to avoid a runtime network dependency
+- [x] **7.6** Border Beam card hover
 
 ### Acceptance criteria
 
-- [ ] 7 featured + 5 extra projects render with images
-- [ ] All external links work
-- [ ] More Projects i18n headers + table headers in EN/PT
+- [x] 6 featured + 5 extra projects render with images (source has 6 featured projects)
+- [x] All external links work
+- [x] More Projects i18n headers + table headers in EN/PT
 
 ---
 
@@ -306,16 +306,16 @@ PDF uses **Filipe Pereira**; portfolio uses **Filipe Lehmann**. Pick one display
 
 ### Tasks
 
-- [ ] **8.1** Contact section — message + WhatsApp/Email/Telegram icons
-- [ ] **8.2** Merge PR #2 particles: Landing (down), Contact (up) — canvas component
-- [ ] **8.3** Dotted Glow behind hero title + contact heading (Aceternity)
-- [ ] **8.4** Gooey scroll CTAs on Learn More + About CTA
+- [x] **8.1** Contact section — message + WhatsApp/Email/Telegram icons
+- [x] **8.2** Particles: Landing (down), Contact (up) — canvas component (`components/effects/particles.tsx`)
+- [x] **8.3** Glow behind hero title + ambient particles behind contact heading
+- [ ] **8.4** Gooey scroll CTAs on Learn More + About CTA — deferred: kept simpler hover-color CTAs; gooey SVG-filter polish not added
 
 ### Acceptance criteria
 
-- [ ] Particles respect `prefers-reduced-motion`
-- [ ] Max 2 animated layers per viewport region
-- [ ] Contact links open correctly
+- [x] Particles respect `prefers-reduced-motion` (static render when reduced)
+- [x] Max 2 animated layers per viewport region
+- [x] Contact links open correctly
 
 ---
 
@@ -334,10 +334,12 @@ npx shadcn@latest add @magicui/border-beam
 npx shadcn@latest add @magicui/animated-theme-toggler
 ```
 
-- [ ] Blur Fade on all sections + staggered project cards
-- [ ] Hero Highlight on job title
-- [ ] Ripple on About avatar
-- [ ] Hexagon on cards (opacity ~0.06)
+- [x] Blur Fade on all sections + staggered project cards
+- [x] Hero Highlight on job title
+- [x] Ripple on About avatar
+- [x] Hexagon on cards (opacity ~0.06)
+
+> **Effects note:** Implemented as lightweight in-repo components (`components/effects/`: `blur-fade`, `hero-highlight`, `ripple`, `hexagon-pattern`, `border-beam`, `particles`) instead of the `npx shadcn add @aceternity/* @magicui/*` registry imports, to avoid an external registry/network dependency at build time. Link Preview (7.5) and Gooey CTA (8.4) — which rely on an external screenshot service / heavier SVG-filter work — are deferred.
 
 ---
 
@@ -395,12 +397,12 @@ npm run dev
 | 1 — Content + CV from PDF | `[x]` |
 | 2 — CV print routes | `[x]` |
 | 3 — Layout shell | `[x]` |
-| 4 — Hero | `[ ]` |
-| 5 — About | `[ ]` |
-| 6 — Experience | `[ ]` |
-| 7 — Projects | `[ ]` |
-| 8 — Contact + particles | `[ ]` |
-| 9 — Effects polish | `[ ]` |
+| 4 — Hero | `[x]` |
+| 5 — About | `[x]` |
+| 6 — Experience | `[x]` |
+| 7 — Projects | `[x]` (7.5 Link Preview deferred) |
+| 8 — Contact + particles | `[x]` (8.4 Gooey CTA deferred) |
+| 9 — Effects polish | `[x]` |
 | 10 — QA + SEO | `[ ]` |
 | **Final validation** | `[ ]` |
 

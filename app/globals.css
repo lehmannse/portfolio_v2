@@ -111,6 +111,22 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+@keyframes ripple {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes border-beam {
+  to {
+    offset-distance: 100%;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
