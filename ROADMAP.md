@@ -164,9 +164,9 @@ PDF uses **Filipe Pereira**; portfolio uses **Filipe Lehmann**. Pick one display
 
 ### Tasks
 
-- [ ] **2.1** `app/[locale]/cv/page.tsx` — Server Component, loads `getCvContent(locale)`
-- [ ] **2.2** `components/cv/cv-document.tsx` — semantic layout: header, summary, experience, education, skills sidebar or two-column A4 (~210mm)
-- [ ] **2.3** Print CSS in `globals.css`:
+- [x] **2.1** `app/[locale]/cv/page.tsx` — Server Component, loads `getCvContent(locale)`
+- [x] **2.2** `components/cv/cv-document.tsx` — semantic layout: header, summary, experience, education, skills sidebar or two-column A4 (~210mm)
+- [x] **2.3** Print CSS in `globals.css`:
 
 ```css
 @media print {
@@ -175,16 +175,16 @@ PDF uses **Filipe Pereira**; portfolio uses **Filipe Lehmann**. Pick one display
 }
 ```
 
-- [ ] **2.4** "Print / Save as PDF" button (`window.print()`) — hidden in `@media print`
-- [ ] **2.5** Navbar link: CV → `/[locale]/cv` (new tab or same tab)
-- [ ] **2.6** Keep `/resume.pdf` in footer until HTML CV validated; optional redirect note in README
+- [x] **2.4** "Print / Save as PDF" button (`window.print()`) — hidden in `@media print`
+- [x] **2.5** Navbar link: CV → `/[locale]/cv` (added in Phase 3 layout shell)
+- [x] **2.6** Keep `/resume.pdf` in footer until HTML CV validated (footer links retain `/resume.pdf`)
 
 ### Acceptance criteria
 
-- [ ] `/en/cv` and `/pt/cv` render full CV **without JavaScript** (view source shows complete text)
-- [ ] Browser Print → Save as PDF produces clean A4 (no nav/footer)
-- [ ] All sections from PDF present: summary, 8 jobs, education, skills, languages, certs
-- [ ] `npm run build` static-generates both CV routes
+- [x] `/en/cv` and `/pt/cv` render full CV **without JavaScript** (static HTML shows complete text)
+- [x] Browser Print → Save as PDF produces clean A4 (no nav/footer)
+- [x] All sections from PDF present: summary, jobs, education, skills, languages, certs (certs empty in source)
+- [x] `npm run build` static-generates both CV routes
 
 ---
 
@@ -207,11 +207,11 @@ PDF uses **Filipe Pereira**; portfolio uses **Filipe Lehmann**. Pick one display
 
 ### Tasks
 
-- [ ] **3.1** `Navbar` — sticky, backdrop-blur, locale toggle (EN/PT), theme toggle (Magic UI `AnimatedThemeToggler` when effects phase starts; plain toggle OK here)
-- [ ] **3.2** `Footer` — social links, scroll-to-top, footer copy from content
-- [ ] **3.3** `Section` — id, title, `BlurFade` wrapper (add in Phase 8 if not ready)
-- [ ] **3.4** `LinkIconBar` — GitHub, LinkedIn, CV (`/[locale]/cv` + `/resume.pdf`)
-- [ ] **3.5** Gradient page backgrounds (top/bottom washes from old `_app.jsx` — sky `#90cdf4` / dark `#2a4365`)
+- [x] **3.1** `Navbar` — sticky, backdrop-blur, locale toggle (EN/PT), theme toggle (plain toggle)
+- [x] **3.2** `Footer` — social links, scroll-to-top, footer copy from content
+- [x] **3.3** `Section` — id, title, `BlurFade` wrapper
+- [x] **3.4** `LinkIconBar` — GitHub, LinkedIn, CV (`/[locale]/cv` + `/resume.pdf`)
+- [x] **3.5** Gradient page backgrounds (top/bottom washes from old `_app.jsx` — sky `#90cdf4` / dark `#2a4365`)
 
 ### Acceptance criteria
 
@@ -393,8 +393,8 @@ npm run dev
 |-------|--------|
 | 0 — Re-scaffold | `[x]` |
 | 1 — Content + CV from PDF | `[x]` |
-| 2 — CV print routes | `[ ]` |
-| 3 — Layout shell | `[ ]` |
+| 2 — CV print routes | `[x]` |
+| 3 — Layout shell | `[x]` |
 | 4 — Hero | `[ ]` |
 | 5 — About | `[ ]` |
 | 6 — Experience | `[ ]` |
