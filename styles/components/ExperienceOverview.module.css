@@ -1,0 +1,86 @@
+.card {
+  position: relative;
+  border-radius: var(--chakra-radii-lg);
+  overflow: hidden;
+  transition: all ease 0.3s;
+}
+
+/* fractal noise overlay */
+.filter {
+  position: absolute;
+  inset: 0;
+  filter: url(#fractalNoiseFilter);
+  opacity: 0.1;
+  z-index: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  transition: all ease 0.3s;
+}
+
+/* glowing backdrop element */
+.backdrop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 33px;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: all ease 0.3s;
+  z-index: -2;
+}
+
+/* extra shadow layer */
+.shadow {
+  transition: all ease 0.3s;
+}
+
+.bg-noise {
+  background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+/* ----- Hover States ----- */
+/* .card:hover > .backdrop {
+  width: 340px;
+  height: 340px;
+  background: radial-gradient(
+      circle at top,
+      var(--radial-center),
+      var(--radial-edge)
+    ),
+    linear-gradient(135deg, var(--card-grd1), var(--card-grd2));
+  z-index: -2;
+  border-radius: 33px;
+  opacity: 30%;
+}
+
+.card:hover {
+  background: radial-gradient(
+      50% 90% at top,
+      var(--radial-center),
+      var(--radial-edge)
+    ),
+    linear-gradient(135deg, var(--card-grd1), var(--card-grd2));
+  z-index: 3;
+}
+
+.card:hover > .filter {
+  opacity: 22%;
+  mix-blend-mode: hard-light;
+}
+
+.card:hover > .shadow {
+  box-shadow: 0px 4px 80px 10px rgb(173, 155, 255, 0.4);
+  z-index: 1;
+} */
+
+/* keep your existing media query */
+/* @media only screen and (max-width: 600px) {
+  .grid_exp {
+    margin-left: 0 !important;
+    text-align: center;
+  }
+} */
