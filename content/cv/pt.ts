@@ -1,0 +1,132 @@
+import { CvContent } from './types';
+
+// Fonte da verdade: public/resume.pdf (exportação do LinkedIn), traduzido para PT-BR.
+const cvPt: CvContent = {
+  name: 'Filipe Lehmann Pereira',
+  headline: 'Engenheiro Frontend',
+  location: 'Curitiba, Paraná, Brasil',
+  contact: {
+    phone: '+55 33 99159-0880',
+    email: 'filipelehmannp@gmail.com',
+    linkedin: 'linkedin.com/in/filipe-lehmann-pereira/',
+    portfolio: 'filipelehmann.vercel.app',
+  },
+  summary:
+    'Sou um engenheiro frontend com mais de 3 anos de experiência, atuando principalmente nos setores florestal e imobiliário, construindo aplicações web escaláveis e responsivas com React, Next.js e TypeScript. Tenho fortes habilidades técnicas, atenção aos detalhes e um histórico comprovado de entrega de plataformas SaaS, design systems e interfaces orientadas a dados em equipes ágeis, multifuncionais e remote-first internacionais. Ajudei meus projetos a se integrarem perfeitamente à rotina diária dos clientes e possibilitei economias mensais de milhares de reais ao entregar soluções fundamentadas em arquitetura sólida baseada em componentes, princípios de UI/UX, gerenciamento de estado robusto (Zustand, Redux) e testes ponta a ponta (Cypress, Jest). Quero continuar construindo soluções significativas e contribuindo para projetos com propósito, especialmente ao lado de colaboradores curiosos e de mente aberta. Sou fluente em inglês e português, e converso em alemão.',
+  skills: [
+    'React',
+    'Next.js',
+    'TypeScript',
+    'JavaScript',
+    'Node.js',
+    'HTML',
+    'CSS',
+    'SCSS',
+    'Tailwind',
+    'Design Responsivo',
+    'Bibliotecas de gerenciamento de estado',
+    'GraphQL',
+    'Otimização de performance',
+    'Compatibilidade entre navegadores',
+    'D3',
+    'Recharts',
+    'Google Maps',
+    'Figma',
+    'UI/UX',
+    'Padrões de Projeto',
+    'Selenium',
+    'Cypress',
+    'Jest',
+    'Git & GitHub',
+    'Metodologias Ágeis',
+  ],
+  languages: [
+    { name: 'Inglês', level: 'Fluente (C2)' },
+    { name: 'Português', level: 'Nativo' },
+    { name: 'Alemão', level: 'Proficiência conversacional (B1)' },
+  ],
+  certifications: [],
+  experience: [
+    {
+      company: 'Pixlog',
+      title: 'Engenheiro de Software',
+      duration: 'Jun 2024 - Jun 2025',
+      technologies: 'React, Next.js, TypeScript, Tailwind, Zustand, TanStack Table, Google Maps',
+      bullets: [
+        'Liderou o desenvolvimento frontend de uma plataforma web B2B SaaS usando React, Next.js, TypeScript e Tailwind, oferecendo uma solução de gestão para processar dados coletados por operadores, permitindo que os clientes integrassem a plataforma perfeitamente à sua rotina e fluxo de trabalho diários.',
+        'Construiu um dashboard elegante com Google Maps, listas dinâmicas com TanStack Table, estruturas de gerenciamento de estado com Zustand e diversos componentes reutilizáveis, facilitando a prototipagem rápida de novos recursos e a manutenção com testes automatizados.',
+        'Refatorou o sistema de geração de PDF da plataforma, possibilitando economia de milhares de reais por mês e aumentando a confiabilidade da infraestrutura da empresa.',
+        'Internacionalizou a plataforma em 3 idiomas, viabilizando melhor trabalho comercial, suporte e acesso para novos clientes do Paraguai e da Argentina.',
+      ],
+    },
+    {
+      company: 'Freelance',
+      title: 'Engenheiro de Software Freelance',
+      duration: 'Set 2023 - Jul 2024',
+      bullets: [
+        'Melhorou a plataforma do cliente para transmitir mais autoridade, converter mais leads e gerenciar melhor os dados dos clientes, gerando maior produtividade, satisfação do usuário e receita.',
+        'Projetou e implementou layouts para que o cliente pudesse criar e entregar seus cursos dentro da plataforma.',
+        'Auxiliou na visão do cliente para a evolução da plataforma, criando roadmaps para apresentar e implementar as mudanças desejadas em etapas sensatas.',
+        'Forneceu insights e ajudou o cliente a reduzir custos mensais relevantes revisando suas assinaturas de ferramentas.',
+      ],
+    },
+    {
+      company: 'Hype Empreendimentos',
+      title: 'Engenheiro de Software',
+      duration: 'Abr 2022 - Out 2023',
+      technologies: 'React, Next.js, TypeScript, D3.js, GraphQL, Cypress, Jest, GitLab',
+      bullets: [
+        'Foi pioneiro em uma plataforma SaaS para uma spinoff de tecnologia financeira (CapLink), projetando e implementando a primeira versão de uma plataforma que simplificou o crédito imobiliário multimilionário em reais para projetos de construção de grande escala usando React e Next.js.',
+        'Acelerou um complexo processo de aprovação de crédito desenvolvendo o frontend para uma plataforma financeira que digitalizou um processo antes lento e burocrático, usando D3.js para representar visualmente as etapas do processo, melhorando significativamente a experiência do usuário e contribuindo para uma adoção mais rápida.',
+        'Construiu a base para um produto escalável arquitetando a interface da plataforma com um design modular baseado em componentes, usando TypeScript para garantir segurança de tipos e aplicando princípios de Clean Architecture.',
+        'Implementou a integração GraphQL do frontend com serviços de backend, colaborando para definir schemas e consumir dados para construir recursos dinâmicos.',
+        'Contribuiu para fluxos de CI/CD e controle de versão usando Git e GitLab, apoiando a entrega contínua e garantindo confiabilidade de implantação por meio de testes ponta a ponta com Cypress e testes unitários com Jest.',
+        'Colaborou de perto com equipes ágeis multidisciplinares, com engenheiros, analistas e designers, para entregar recursos alinhados aos objetivos de negócio e às necessidades dos usuários.',
+      ],
+    },
+    {
+      company: 'Guarani Sistemas',
+      title: 'Estagiário em Engenharia de Software',
+      duration: 'Mai 2022 - Nov 2023',
+      technologies: 'Vue.js, HTML, CSS, JavaScript, Jira, GitLab',
+      bullets: [
+        'Contribuiu para o desenvolvimento front-end de uma aplicação web empresarial usando Vue.js, HTML, CSS e JavaScript, melhorando a consistência e a responsividade da UI.',
+        'Resolveu bugs e solicitações de recursos de baixa e média prioridade, aprimorando a experiência do usuário e a estabilidade geral do sistema.',
+        'Criou histórias de usuário detalhadas para recursos além do MVP, apoiando o refinamento de backlog e o planejamento de sprints.',
+        'Projetou mockups mobile-first e fluxos de UI em colaboração com as equipes de produto e design, garantindo acessibilidade e responsividade entre dispositivos.',
+        'Participou de reuniões diárias de Scrum, acompanhou tarefas no Jira e colaborou usando GitLab para controle de versão e revisões de código.',
+        'Adquiriu experiência prática em metodologias ágeis, design de UI/UX e entrega colaborativa de software em ambiente de produção.',
+      ],
+    },
+    {
+      company: 'Volunteers for Ukraine',
+      title: 'Engenheiro de Software',
+      duration: 'Mar 2024 - Jul 2024',
+      technologies: 'React, TypeScript, Node.js, Atomic Design',
+      bullets: [
+        'Participou do desenvolvimento front-end de uma aplicação web React para um projeto de gestão de crises em apoio à crise humanitária ucraniana.',
+        'Trabalhou no design responsivo de UI/UX e na codificação de layouts para as seções de Projetos, Organizações e Voluntários.',
+        'Utilizou o padrão Atomic Design para criar componentes do projeto e código reutilizável e de fácil manutenção.',
+        'Trabalhou com clientes TypeScript gerados via ferramentas Node.js para integração de API.',
+      ],
+    },
+  ],
+  education: [
+    {
+      school: 'Instituto Federal de Minas Gerais',
+      degree: 'Bacharelado em Engenharia de Computação',
+      duration: '2017 - 2022',
+    },
+  ],
+  labels: {
+    summary: 'Resumo',
+    experience: 'Experiência',
+    education: 'Formação',
+    skills: 'Habilidades',
+    languages: 'Idiomas',
+    certifications: 'Certificações',
+    print: 'Imprimir / Salvar como PDF',
+  },
+};
+
+export default cvPt;

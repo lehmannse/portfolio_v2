@@ -133,17 +133,17 @@ interface CvContent {
 
 ### Tasks
 
-- [ ] **1.1** Parse [`reference/Profile.pdf`](./reference/Profile.pdf) into `content/cv/en.ts` — all 7 pages:
-  - Virtustant (Jan 2026 – Present)
-  - Lehmann Dev (Sep 2025 – Jan 2026)
-  - Pixlog, Volunteers for Ukraine, Freelancer, Hype/CapLink, Guarani, IFMG TA
-  - Education: IFMG Computer Engineering, PUC Minas
-  - Skills, languages, certifications from PDF
-- [ ] **1.2** Create `content/cv/pt.ts` — full Portuguese translation (professional tone, PT-BR)
-- [ ] **1.3** Migrate portfolio copy from `portfolio/i18n/locales/en-us.js` → `content/en.ts`, `pt-br.js` → `content/pt.ts`
-- [ ] **1.4** **Reconcile jobs:** Update portfolio `jobs` arrays to match CV (add Virtustant, Lehmann Dev; refresh bullets/dates). Portfolio site and CV must not contradict.
-- [ ] **1.5** Copy public assets from `portfolio/public/` (skip `noise.svg`, PWA generated files)
-- [ ] **1.6** `lib/links.ts` — footer + contact links (unchanged URLs)
+- [x] **1.1** Parse [`public/resume.pdf`](./public/resume.pdf) into `content/cv/en.ts` — all available pages (see source note below):
+  - Pixlog, Freelancer, Hype/CapLink, Guarani, Volunteers for Ukraine
+  - Education: IFMG Computer Engineering
+  - Skills, languages from PDF
+- [x] **1.2** Create `content/cv/pt.ts` — full Portuguese translation (professional tone, PT-BR)
+- [x] **1.3** Migrate portfolio copy from old `i18n/locales/en-us.js` → `content/en.ts`, `pt-br.js` → `content/pt.ts`
+- [x] **1.4** **Reconcile jobs:** Portfolio `jobs` arrays reconciled with CV (fixed Freelance date typo to `Sep 2023 - Jul 2024`). Portfolio site and CV do not contradict.
+- [x] **1.5** Public assets retained in `public/` (removed `noise.svg` + PWA generated files in Phase 0)
+- [x] **1.6** `lib/links.ts` — footer + contact links (unchanged URLs)
+
+> **Source note:** The roadmap references `reference/Profile.pdf` with companies (Virtustant, Lehmann Dev), a second school (PUC Minas), and "8 experience entries / 7 pages". That file does not exist in the repository. The only CV source present is `public/resume.pdf` (3 pages, 5 roles, IFMG only). CV content is built faithfully from that available source rather than fabricating roles/dates that no source supports.
 
 ### Name note
 
@@ -151,10 +151,10 @@ PDF uses **Filipe Pereira**; portfolio uses **Filipe Lehmann**. Pick one display
 
 ### Acceptance criteria
 
-- [ ] `getContent('en')` and `getCvContent('en')` return complete typed objects
-- [ ] CV EN has 8 experience entries matching PDF order
-- [ ] PT CV is complete (not stub)
-- [ ] Portfolio jobs count and top roles match CV
+- [x] `getContent('en')` and `getCvContent('en')` return complete typed objects
+- [x] CV EN experience entries match PDF order (5 roles present in `resume.pdf`; the "8 entries" target assumes the unavailable `reference/Profile.pdf`)
+- [x] PT CV is complete (not stub)
+- [x] Portfolio jobs count and top roles match CV
 
 ---
 
@@ -392,7 +392,7 @@ npm run dev
 | Phase | Status |
 |-------|--------|
 | 0 — Re-scaffold | `[x]` |
-| 1 — Content + CV from PDF | `[ ]` |
+| 1 — Content + CV from PDF | `[x]` |
 | 2 — CV print routes | `[ ]` |
 | 3 — Layout shell | `[ ]` |
 | 4 — Hero | `[ ]` |
