@@ -1,12 +1,12 @@
 # Portfolio v2
 
-Personal portfolio rebuilt with **Next.js App Router**, **shadcn/ui**, and **Tailwind CSS**.
+Personal portfolio built with **Next.js App Router**, **shadcn/ui**, and **Tailwind CSS v4**.
 
-Includes a **print-ready web CV** at `/en/cv` and `/pt/cv`, sourced from [`reference/Profile.pdf`](./reference/Profile.pdf).
+Includes a **print-ready web CV** at `/en/cv` and `/pt/cv`, sourced from [`public/resume.pdf`](./public/resume.pdf).
 
 ## Start here
 
-Read **[ROADMAP.md](./ROADMAP.md)** — the agent iteration plan. Work one phase at a time.
+Read **[ROADMAP.md](./ROADMAP.md)** — the build plan, organized by phase.
 
 ## Prerequisites
 
@@ -22,8 +22,10 @@ npm run dev
 
 | Route | Description |
 |-------|-------------|
+| `/` | Redirects to `/en` |
 | `/en`, `/pt` | Portfolio (animated single-page) |
 | `/en/cv`, `/pt/cv` | Printable CV (Save as PDF) |
+| `/resume.pdf` | Legacy PDF download |
 
 ## Stack
 
@@ -31,9 +33,9 @@ npm run dev
 - shadcn/ui + Tailwind CSS v4
 - next-intl (EN / PT-BR)
 - next-themes
-- Aceternity UI + Magic UI (effects, Phase 9)
+- framer-motion
 
-## Reference files
+## Content
 
-- `reference/Profile.pdf` — LinkedIn CV export (content source for CV routes)
-- `../portfolio/` — original site (UX/layout reference only; do not copy Chakra code)
+- `content/` — typed portfolio + CV content modules (EN / PT)
+- `public/resume.pdf` — CV export (content source for `/cv` routes)

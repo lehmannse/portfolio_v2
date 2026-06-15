@@ -86,20 +86,20 @@ For **every phase**:
 
 ### Tasks
 
-- [ ] **0.1** Back up reusable assets: copy `public/` images, `resume.pdf`, i18n locale **content** (into temp or directly into new `content/`)
-- [ ] **0.2** Remove Chakra-era source: `pages/`, `theme/`, Chakra components, CSS modules (keep `reference/`, `ROADMAP.md`, `README.md`)
-- [ ] **0.3** Scaffold: `create-next-app` structure in place — TypeScript, Tailwind v4, App Router, ESLint
-- [ ] **0.4** Init shadcn/ui; add base components: `button`, `card`, `badge`, `tabs`, `select`, `sheet`, `popover`, `separator`
-- [ ] **0.5** Install: `next-intl`, `next-themes`, `framer-motion`, `react-icons`
-- [ ] **0.6** Configure `[locale]` routing, `middleware.ts`, `i18n/request.ts` with **nested** messages or empty `{}` + typed `getContent()`
-- [ ] **0.7** README — no fork attribution (`jcserv`, Jarrod Servilla)
+- [x] **0.1** Back up reusable assets: copy `public/` images, `resume.pdf`, i18n locale **content** (into temp or directly into new `content/`)
+- [x] **0.2** Remove Chakra-era source: `pages/`, `theme/`, Chakra components, CSS modules (keep `reference/`, `ROADMAP.md`, `README.md`)
+- [x] **0.3** Scaffold: `create-next-app` structure in place — TypeScript, Tailwind v4, App Router, ESLint
+- [x] **0.4** Init shadcn/ui; add base components: `button`, `card`, `badge`, `tabs`, `select`, `sheet`, `popover`, `separator`
+- [x] **0.5** Install: `next-intl`, `next-themes`, `framer-motion`, `react-icons`
+- [x] **0.6** Configure `[locale]` routing, `middleware.ts`, `i18n/request.ts` with **nested** messages or empty `{}` + typed `getContent()`
+- [x] **0.7** README — no fork attribution (`jcserv`, Jarrod Servilla)
 
 ### Acceptance criteria
 
-- [ ] `npm run build` succeeds on empty `[locale]/page.tsx` shell
-- [ ] `/en` and `/pt` resolve (even if placeholder)
-- [ ] No `@chakra-ui/*` in `package.json`
-- [ ] Grep `jcserv|Jarrod|Servilla` → zero matches
+- [x] `npm run build` succeeds on empty `[locale]/page.tsx` shell
+- [x] `/en` and `/pt` resolve (even if placeholder)
+- [x] No `@chakra-ui/*` in `package.json`
+- [x] Grep `jcserv|Jarrod|Servilla` → zero matches
 
 ---
 
@@ -391,7 +391,7 @@ npm run dev
 
 | Phase | Status |
 |-------|--------|
-| 0 — Re-scaffold | `[ ]` |
+| 0 — Re-scaffold | `[x]` |
 | 1 — Content + CV from PDF | `[ ]` |
 | 2 — CV print routes | `[ ]` |
 | 3 — Layout shell | `[ ]` |
