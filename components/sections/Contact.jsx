@@ -4,37 +4,33 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import links from '../../data/contactLinks';
-import BlueprintPattern from '../BlueprintPattern';
 import LinkIconBar from '../LinkIconBar';
 import SectionContainer from '../SectionContainer';
 
 export default function Contact() {
   const { t, i18n } = useTranslation();
   return (
-    <div style={{ position: 'relative' }}>
-      <BlueprintPattern position="bottom" />
-      <SectionContainer
-        id="contact"
-        name="contact"
-        headerText={
-          i18n.resolvedLanguage === 'pt' ? 'Entre em Contato' : 'Contact Me'
-        }
-        style={{ minHeight: '80vh', position: 'relative', zIndex: 1 }}
-        useHeaderStyle
+    <SectionContainer
+      id="contact"
+      name="contact"
+      headerText={
+        i18n.resolvedLanguage === 'pt' ? 'Entre em Contato' : 'Contact Me'
+      }
+      style={{ minHeight: '80vh', position: 'relative', zIndex: 1 }}
+      useHeaderStyle
+    >
+      <Flex
+        width={{ base: '75%', sm: '50%' }}
+        justifyContent="center"
+        textAlign="center"
+        flexDirection="column"
+        px={4}
       >
-        <Flex
-          width={{ base: '75%', sm: '50%' }}
-          justifyContent="center"
-          textAlign="center"
-          flexDirection="column"
-          px={4}
-        >
-          <Text fontSize="xl" m="auto">
-            {t('contact')}
-          </Text>
-          <LinkIconBar pt={12} links={links} />
-        </Flex>
-      </SectionContainer>
-    </div>
+        <Text fontSize="xl" m="auto">
+          {t('contact')}
+        </Text>
+        <LinkIconBar pt={12} links={links} />
+      </Flex>
+    </SectionContainer>
   );
 }

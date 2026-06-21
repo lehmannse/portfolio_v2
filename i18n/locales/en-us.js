@@ -16,6 +16,10 @@ export default {
       label: 'Contact',
       section: 'Contact',
     },
+    {
+      label: 'CV',
+      href: '/cv',
+    },
   ],
   landing: {
     intro: "Hello, I'm Filipe Lehmann, a",

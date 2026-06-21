@@ -16,6 +16,7 @@ import {
   useDisclosure,
   HStack,
 } from '@chakra-ui/react';
+import NextLink from 'next/link';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaMoon, FaSun } from 'react-icons/fa';
@@ -67,6 +68,9 @@ const MenuToggle = ({ isOpen, onOpen }) => {
   );
 };
 
+const isInternalHref = (href) =>
+  Boolean(href && href.startsWith('/') && !href.startsWith('//'));
+
 const NavButtons = ({ size, onClose }) => {
   const { t, i18n } = useTranslation();
   const secondary = useColorModeValue(
@@ -94,49 +98,67 @@ const NavButtons = ({ size, onClose }) => {
     );
   }
 
-  const btns = navItems.map((btn) => (
-    <Button
-      key={btn.label}
-      size={size}
-      variant="ghost"
-      onClick={onClose}
-      className="navbar-link"
-      borderRadius="0"
-      fontFamily="var(--font-mono)"
-      fontSize="11px"
-      letterSpacing="0.08em"
-      textTransform="uppercase"
-      fontWeight="600"
-      px={3}
-      h="36px"
-      transition="opacity 0.15s ease"
-      _hover={{
-        bg: hoverBg,
-        color: secondary,
-        transform: 'none',
-      }}
-      _active={{
-        transform: 'none',
-      }}
-    >
-      {btn.href ? (
+  const renderNavLabel = (btn) => {
+    if (btn.href && isInternalHref(btn.href)) {
+      return btn.label;
+    }
+
+    if (btn.href) {
+      return (
         <Link href={btn.href} isExternal>
           {btn.label}
         </Link>
-      ) : (
-        <ScrollLink
-          to={btn.section.toLowerCase()}
-          spy
-          smooth
-          offset={-88}
-          duration={500}
-          onClick={onClose}
-        >
-          {btn.label}
-        </ScrollLink>
-      )}
-    </Button>
-  ));
+      );
+    }
+
+    return (
+      <ScrollLink
+        to={btn.section.toLowerCase()}
+        spy
+        smooth
+        offset={-88}
+        duration={500}
+        onClick={onClose}
+      >
+        {btn.label}
+      </ScrollLink>
+    );
+  };
+
+  const btns = navItems.map((btn) => {
+    const isInternalLink = btn.href && isInternalHref(btn.href);
+
+    return (
+      <Button
+        key={btn.label}
+        as={isInternalLink ? NextLink : undefined}
+        href={isInternalLink ? btn.href : undefined}
+        size={size}
+        variant="ghost"
+        onClick={isInternalLink ? onClose : undefined}
+        className="navbar-link"
+        borderRadius="0"
+        fontFamily="var(--font-mono)"
+        fontSize="11px"
+        letterSpacing="0.08em"
+        textTransform="uppercase"
+        fontWeight="600"
+        px={3}
+        h="36px"
+        transition="opacity 0.15s ease"
+        _hover={{
+          bg: hoverBg,
+          color: secondary,
+          transform: 'none',
+        }}
+        _active={{
+          transform: 'none',
+        }}
+      >
+        {renderNavLabel(btn)}
+      </Button>
+    );
+  });
 
   return <>{btns}</>;
 };

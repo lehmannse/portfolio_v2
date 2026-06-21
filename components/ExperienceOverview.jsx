@@ -151,6 +151,10 @@ export default function ExperienceOverview() {
 
   const jobs = t('jobs', { returnObjects: true });
 
+  const layoutTransition = {
+    layout: { duration: 0.38, ease: [0.4, 0, 0.2, 1] },
+  };
+
   const borderConfig = () => {
     if (!showSelect) return null;
     if (bg === colors.bg.light)
@@ -172,6 +176,7 @@ export default function ExperienceOverview() {
       <Flex
         as={motion.div}
         layout
+        transition={layoutTransition}
         className={styles.card}
         direction={{ base: 'column', md: 'row' }}
         justifyContent="center"
@@ -182,11 +187,9 @@ export default function ExperienceOverview() {
         p={{ base: '12px', md: '20px' }}
         spacing={8}
         shadow={`0 12px 40px ${shadowColor}`}
-        transition="all 0.3s ease"
         _hover={{
           shadow: `0 20px 50px ${hoverShadowColor}`,
         }}
-        minH="auto"
         style={{
           width: '100%',
           position: 'relative',
@@ -220,15 +223,23 @@ export default function ExperienceOverview() {
           )}
         </Grid>
 
-        <Grid style={{ position: 'relative', zIndex: 1 }}>
-          <AnimatePresence mode="wait">
+        <Grid
+          as={motion.div}
+          layout
+          transition={layoutTransition}
+          style={{ position: 'relative', zIndex: 1, width: '100%' }}
+        >
+          <AnimatePresence mode="popLayout" initial={false}>
             <motion.div
               key={index}
-              initial={{ y: 10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -10, opacity: 0 }}
-              transition={{ duration: 0.2 }}
               layout
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{
+                ...layoutTransition,
+                opacity: { duration: 0.2 },
+              }}
             >
               <ExperienceDetails index={index} jobs={jobs} />
             </motion.div>

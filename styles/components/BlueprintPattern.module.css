@@ -10,14 +10,14 @@
 
 .top {
   top: 0;
-  mask-image: linear-gradient(to bottom, white 10%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, white 10%, transparent 100%);
+  mask-image: linear-gradient(to bottom, white 45%, transparent 72%);
+  -webkit-mask-image: linear-gradient(to bottom, white 45%, transparent 72%);
 }
 
 .bottom {
   bottom: 0;
-  mask-image: linear-gradient(to top, white 10%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to top, white 10%, transparent 100%);
+  mask-image: linear-gradient(to top, white 45%, transparent 72%);
+  -webkit-mask-image: linear-gradient(to top, white 45%, transparent 72%);
 }
 
 .svg {

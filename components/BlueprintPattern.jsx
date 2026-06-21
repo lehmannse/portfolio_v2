@@ -5,12 +5,12 @@ import styles from '../styles/components/BlueprintPattern.module.css';
 
 export default function BlueprintPattern({ position = 'top' }) {
   const stroke = useColorModeValue(
-    'rgba(28, 167, 208, 0.28)',
-    'rgba(144, 205, 244, 0.22)'
+    'rgba(28, 167, 208, 0.42)',
+    'rgba(144, 205, 244, 0.34)'
   );
   const minorStroke = useColorModeValue(
-    'rgba(28, 167, 208, 0.14)',
-    'rgba(144, 205, 244, 0.1)'
+    'rgba(28, 167, 208, 0.22)',
+    'rgba(144, 205, 244, 0.16)'
   );
 
   return (

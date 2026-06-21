@@ -16,6 +16,10 @@ export default {
       label: 'Contato',
       section: 'Contact',
     },
+    {
+      label: 'CV',
+      href: '/cv',
+    },
   ],
   landing: {
     intro: 'Olá, eu sou Filipe Lehmann, um',
