@@ -1,0 +1,155 @@
+.cvPage {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 96px 24px 48px;
+  color: #1a202c;
+  background: #fff;
+}
+
+.cvToolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-end;
+  margin-bottom: 32px;
+}
+
+.cvToolbar button,
+.cvToolbar a {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid #cbd5e0;
+  background: #f7fafc;
+  color: #1a202c;
+  padding: 10px 14px;
+  cursor: pointer;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.cvToolbar button:hover,
+.cvToolbar a:hover {
+  background: #edf2f7;
+}
+
+.cvLangToggle {
+  display: inline-flex;
+  border: 1px solid #cbd5e0;
+}
+
+.cvLangToggle button {
+  border: none;
+  border-right: 1px solid #cbd5e0;
+  background: #fff;
+}
+
+.cvLangToggle button:last-child {
+  border-right: none;
+}
+
+.cvLangToggle button[data-active='true'] {
+  background: #252934;
+  color: #fff;
+}
+
+.cvHeader {
+  border-bottom: 2px solid #252934;
+  padding-bottom: 20px;
+  margin-bottom: 28px;
+}
+
+.cvTitle {
+  margin: 0;
+  font-size: clamp(28px, 4vw, 40px);
+  letter-spacing: -0.03em;
+}
+
+.cvSubtitle {
+  margin: 8px 0 0;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: #1ca7d0;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.cvTagline {
+  margin: 12px 0 0;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+.cvSection {
+  margin-bottom: 28px;
+}
+
+.cvSection h2 {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #1ca7d0;
+}
+
+.cvSection p,
+.cvSection li {
+  line-height: 1.65;
+  color: #2d3748;
+}
+
+.cvJob {
+  margin-bottom: 20px;
+}
+
+.cvJob h3 {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+
+.cvJobMeta {
+  margin: 0 0 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #718096;
+}
+
+.cvJob ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.cvGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.cvCard {
+  border: 1px solid #e2e8f0;
+  padding: 14px;
+}
+
+.cvContactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cvContactList li {
+  margin-bottom: 6px;
+}
+
+@media print {
+  .cvToolbar {
+    display: none !important;
+  }
+
+  .cvPage {
+    padding: 0;
+    max-width: none;
+  }
+}

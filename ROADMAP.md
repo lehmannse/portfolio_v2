@@ -4,17 +4,17 @@ Single source of truth for building `portfolio_v2/` until the site is polished, 
 
 ## Strategic decisions (locked)
 
-| Decision | Choice |
-|----------|--------|
-| **UI** | **shadcn/ui + Tailwind CSS v4** — no Chakra |
-| **Framework** | **Next.js App Router + TypeScript** — not a pure React SPA |
-| **Rendering** | Portfolio home = mostly **client** components; CV routes = **server/static** (print-ready HTML) |
-| **i18n** | **next-intl** — locales `en` and `pt` |
-| **CV source of truth** | [`reference/Profile.pdf`](./reference/Profile.pdf) (LinkedIn export) → structured `content/cv/` |
-| **Portfolio content** | Migrate from `portfolio/i18n/locales/` + **sync with CV** (jobs, summary, skills) |
-| **Baseline reference UX** | Layout/flow from `portfolio/` (original Chakra site) — replicate *behavior*, not Chakra code |
-| **Effects** | Aceternity + Magic UI **after** core layout is stable (Phase 8+) |
-| **Folder** | Rebuild **in place** in `portfolio_v2/` — archive/remove Chakra Pages Router code during Phase 0 |
+| Decision                  | Choice                                                                                           |
+| ------------------------- | ------------------------------------------------------------------------------------------------ |
+| **UI**                    | **shadcn/ui + Tailwind CSS v4** — no Chakra                                                      |
+| **Framework**             | **Next.js App Router + TypeScript** — not a pure React SPA                                       |
+| **Rendering**             | Portfolio home = mostly **client** components; CV routes = **server/static** (print-ready HTML)  |
+| **i18n**                  | **next-intl** — locales `en` and `pt`                                                            |
+| **CV source of truth**    | [`reference/Profile.pdf`](./reference/Profile.pdf) (LinkedIn export) → structured `content/cv/`  |
+| **Portfolio content**     | Migrate from `portfolio/i18n/locales/` + **sync with CV** (jobs, summary, skills)                |
+| **Baseline reference UX** | Layout/flow from `portfolio/` (original Chakra site) — replicate _behavior_, not Chakra code     |
+| **Effects**               | Aceternity + Magic UI **after** core layout is stable (Phase 8+)                                 |
+| **Folder**                | Rebuild **in place** in `portfolio_v2/` — archive/remove Chakra Pages Router code during Phase 0 |
 
 ## Architecture
 
@@ -51,12 +51,12 @@ portfolio_v2/
 
 ### Route map
 
-| URL | Rendering | Purpose |
-|-----|-----------|---------|
-| `/` | redirect → `/en` | Default locale |
-| `/en`, `/pt` | Client-heavy SSG | Animated portfolio |
-| `/en/cv`, `/pt/cv` | **Static server HTML** | Print / Save as PDF |
-| `/resume.pdf` | Static file | Legacy PDF download (keep until HTML CV replaces it) |
+| URL                | Rendering              | Purpose                                              |
+| ------------------ | ---------------------- | ---------------------------------------------------- |
+| `/`                | redirect → `/en`       | Default locale                                       |
+| `/en`, `/pt`       | Client-heavy SSG       | Animated portfolio                                   |
+| `/en/cv`, `/pt/cv` | **Static server HTML** | Print / Save as PDF                                  |
+| `/resume.pdf`      | Static file            | Legacy PDF download (keep until HTML CV replaces it) |
 
 ---
 
@@ -170,8 +170,16 @@ PDF uses **Filipe Pereira**; portfolio uses **Filipe Lehmann**. Pick one display
 
 ```css
 @media print {
-  nav, footer, .no-print { display: none !important; }
-  .cv-document { color: #000; background: #fff; font-size: 11pt; }
+  nav,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+  .cv-document {
+    color: #000;
+    background: #fff;
+    font-size: 11pt;
+  }
 }
 ```
 
@@ -194,16 +202,16 @@ PDF uses **Filipe Pereira**; portfolio uses **Filipe Lehmann**. Pick one display
 
 ### Chakra → shadcn mapping (use throughout)
 
-| Was (Chakra) | Now (shadcn/Tailwind) |
-|--------------|------------------------|
-| `Box` / `Flex` | `div` + flex/grid utilities |
-| `Drawer` | `Sheet` |
-| `Popover` | `Popover` |
-| `Select` | `Select` or `Tabs` |
-| `useColorMode` | `next-themes` |
-| `SimpleGrid` | CSS grid |
-| `Link` (external) | `<a>` or shadcn |
-| Scroll nav | `react-scroll` or native smooth scroll + anchor IDs |
+| Was (Chakra)      | Now (shadcn/Tailwind)                               |
+| ----------------- | --------------------------------------------------- |
+| `Box` / `Flex`    | `div` + flex/grid utilities                         |
+| `Drawer`          | `Sheet`                                             |
+| `Popover`         | `Popover`                                           |
+| `Select`          | `Select` or `Tabs`                                  |
+| `useColorMode`    | `next-themes`                                       |
+| `SimpleGrid`      | CSS grid                                            |
+| `Link` (external) | `<a>` or shadcn                                     |
+| Scroll nav        | `react-scroll` or native smooth scroll + anchor IDs |
 
 ### Tasks
 
@@ -389,20 +397,20 @@ npm run dev
 
 ## Progress tracker
 
-| Phase | Status |
-|-------|--------|
-| 0 — Re-scaffold | `[ ]` |
-| 1 — Content + CV from PDF | `[ ]` |
-| 2 — CV print routes | `[ ]` |
-| 3 — Layout shell | `[ ]` |
-| 4 — Hero | `[ ]` |
-| 5 — About | `[ ]` |
-| 6 — Experience | `[ ]` |
-| 7 — Projects | `[ ]` |
-| 8 — Contact + particles | `[ ]` |
-| 9 — Effects polish | `[ ]` |
-| 10 — QA + SEO | `[ ]` |
-| **Final validation** | `[ ]` |
+| Phase                     | Status |
+| ------------------------- | ------ |
+| 0 — Re-scaffold           | `[ ]`  |
+| 1 — Content + CV from PDF | `[ ]`  |
+| 2 — CV print routes       | `[ ]`  |
+| 3 — Layout shell          | `[ ]`  |
+| 4 — Hero                  | `[ ]`  |
+| 5 — About                 | `[ ]`  |
+| 6 — Experience            | `[ ]`  |
+| 7 — Projects              | `[ ]`  |
+| 8 — Contact + particles   | `[ ]`  |
+| 9 — Effects polish        | `[ ]`  |
+| 10 — QA + SEO             | `[ ]`  |
+| **Final validation**      | `[ ]`  |
 
 ---
 

@@ -20,10 +20,10 @@ npm install
 npm run dev
 ```
 
-| Route | Description |
-|-------|-------------|
-| `/en`, `/pt` | Portfolio (animated single-page) |
-| `/en/cv`, `/pt/cv` | Printable CV (Save as PDF) |
+| Route              | Description                      |
+| ------------------ | -------------------------------- |
+| `/en`, `/pt`       | Portfolio (animated single-page) |
+| `/en/cv`, `/pt/cv` | Printable CV (Save as PDF)       |
 
 ## Stack
 

@@ -10,6 +10,7 @@ import { Link } from 'react-scroll';
 import links from '../../data/footerLinks';
 import styles from '../../styles/sections/Landing.module.css';
 import { colors } from '../../theme';
+import JobTitleAccent from '../JobTitleAccent';
 import LinkIconBar from '../LinkIconBar';
 import SectionContainer from '../SectionContainer';
 
@@ -23,23 +24,20 @@ export default function Landing() {
   const { t } = useTranslation();
 
   const header = (
-    <motion.div
-      className={styles.center}
-      // initial={{ opacity: 0, y: -30 }}
-      // animate={{ opacity: 1, y: 0 }}
-      // transition={{ duration: 0.8, ease: 'easeOut' }}
-    >
+    <motion.div className={styles.center}>
       <h1
         id="header"
         style={{
           color: primary,
           opacity: 0,
           marginBottom: '6vh',
-          // fontSize: { sm: 24, md: 36 },
         }}
       >
-        {t('landing.intro')}{' '}
-        <strong style={{ color: secondary }}>{t('landing.job')}</strong>
+        <span className="landing-intro">{t('landing.intro')}</span>{' '}
+        <strong className="landing-job-title" style={{ color: secondary }}>
+          {t('landing.job')}
+        </strong>
+        <JobTitleAccent />
       </h1>
     </motion.div>
   );
@@ -49,10 +47,8 @@ export default function Landing() {
       <SectionContainer
         id="landing"
         name="landing"
-        // headerText={header}
         style={{ height: '100vh', margin: '0' }}
       >
-        {/* bottom bar */}
         {header}
         <Flex
           id="landing-icons"
@@ -61,8 +57,6 @@ export default function Landing() {
             position: 'absolute',
             bottom: '1rem',
             gap: 16,
-            // left: '50%',
-            // transform: 'translateX(-50%)',
             textAlign: 'center',
             width: '100%',
             zIndex: 50,
@@ -70,7 +64,7 @@ export default function Landing() {
           }}
         >
           <LinkIconBar links={links} />
-          <Link activeClass="active" to="about" spy smooth>
+          <Link activeClass="active" to="about" spy smooth offset={-88}>
             <Text as="strong" _hover={{ color: secondary, cursor: 'pointer' }}>
               {t('landing.more')}
             </Text>

@@ -67,6 +67,7 @@ const ExperienceButtons = ({ expIndex, setIndex, jobs }) => (
                     bottom: 0,
                     opacity: 0.2,
                     height: '2px',
+                    borderRadius: 0,
                     background: 'var(--chakra-colors-blue-400)',
                   }}
                 />
@@ -173,9 +174,8 @@ export default function ExperienceOverview() {
         justifyContent="center"
         alignItems={{ base: 'center', md: 'flex-start' }}
         md={10}
-        borderRadius="lg"
+        borderRadius="0"
         {...borderConfig()}
-        rounded="md"
         p={{ base: '12px', md: '20px' }}
         spacing={8}
         shadow={`0 12px 40px ${shadowColor}`}
@@ -183,7 +183,7 @@ export default function ExperienceOverview() {
         _hover={{
           shadow: `0 20px 50px ${hoverShadowColor}`,
         }}
-        minH="476px"
+        minH="auto"
         style={{
           width: '100%',
           position: 'relative',
