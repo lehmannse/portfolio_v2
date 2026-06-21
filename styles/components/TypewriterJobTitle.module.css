@@ -1,0 +1,22 @@
+.wrap {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45em;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.prompt {
+  font-weight: 700;
+}
+
+.text {
+  min-width: 1ch;
+}
+
+.cursor {
+  font-weight: 400;
+  transition: opacity 0.1s linear;
+}

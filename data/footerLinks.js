@@ -12,7 +12,7 @@ const links = [
   {
     label: 'CV',
     icon: 'document',
-    url: '/resume.pdf',
+    url: '/cv',
   },
 ];
 

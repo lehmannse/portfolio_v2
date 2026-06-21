@@ -16,7 +16,7 @@ export default function Contact() {
       headerText={
         i18n.resolvedLanguage === 'pt' ? 'Entre em Contato' : 'Contact Me'
       }
-      style={{ minHeight: '80vh' }}
+      style={{ minHeight: '80vh', position: 'relative', zIndex: 1 }}
       useHeaderStyle
     >
       <Flex
@@ -29,19 +29,7 @@ export default function Contact() {
         <Text fontSize="xl" m="auto">
           {t('contact')}
         </Text>
-        {/* <Text fontSize="xl" m="auto">
-          
-        </Text> */}
         <LinkIconBar pt={12} links={links} />
-        {/* <Button
-          as={Link}
-          leftIcon={<EmailIcon />}
-          href="mailto:filipelehmannp@gmail.com"
-          m="auto"
-          mt={6}
-        >
-          Email
-        </Button> */}
       </Flex>
     </SectionContainer>
   );

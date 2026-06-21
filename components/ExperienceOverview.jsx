@@ -19,6 +19,7 @@ import { useTranslation } from 'react-i18next';
 
 import styles from '../styles/components/ExperienceOverview.module.css';
 import { colors } from '../theme';
+import HexagonPattern from './HexagonPattern';
 
 const ExperienceSelect = ({ expIndex, setIndex, jobs }) => (
   <Select
@@ -67,6 +68,7 @@ const ExperienceButtons = ({ expIndex, setIndex, jobs }) => (
                     bottom: 0,
                     opacity: 0.2,
                     height: '2px',
+                    borderRadius: 0,
                     background: 'var(--chakra-colors-blue-400)',
                   }}
                 />
@@ -143,9 +145,15 @@ export default function ExperienceOverview() {
     'rgba(59, 130, 246, 0.2)'
   );
 
+  const hexStroke = useColorModeValue('#1ca7d0', '#90cdf4');
+
   const { t } = useTranslation();
 
   const jobs = t('jobs', { returnObjects: true });
+
+  const layoutTransition = {
+    layout: { duration: 0.38, ease: [0.4, 0, 0.2, 1] },
+  };
 
   const borderConfig = () => {
     if (!showSelect) return null;
@@ -168,28 +176,33 @@ export default function ExperienceOverview() {
       <Flex
         as={motion.div}
         layout
-        className={`${styles.card} ${styles['bg-noise']}`}
+        transition={layoutTransition}
+        className={styles.card}
         direction={{ base: 'column', md: 'row' }}
         justifyContent="center"
         alignItems={{ base: 'center', md: 'flex-start' }}
         md={10}
-        borderRadius="lg"
+        borderRadius="0"
         {...borderConfig()}
-        rounded="md"
         p={{ base: '12px', md: '20px' }}
         spacing={8}
         shadow={`0 12px 40px ${shadowColor}`}
-        transition="all 0.3s ease"
         _hover={{
           shadow: `0 20px 50px ${hoverShadowColor}`,
         }}
-        minH="476px"
         style={{
           width: '100%',
           position: 'relative',
         }}
       >
         {/* new layers */}
+        <HexagonPattern
+          radius={22}
+          gap={0}
+          stroke={hexStroke}
+          strokeOpacity={0.2}
+          masked
+        />
         <div className={styles.backdrop} />
         <div className={styles.filter} />
         <div className={styles.shadow} />
@@ -210,15 +223,23 @@ export default function ExperienceOverview() {
           )}
         </Grid>
 
-        <Grid style={{ position: 'relative', zIndex: 1 }}>
-          <AnimatePresence mode="wait">
+        <Grid
+          as={motion.div}
+          layout
+          transition={layoutTransition}
+          style={{ position: 'relative', zIndex: 1, width: '100%' }}
+        >
+          <AnimatePresence mode="popLayout" initial={false}>
             <motion.div
               key={index}
-              initial={{ y: 10, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -10, opacity: 0 }}
-              transition={{ duration: 0.2 }}
               layout
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{
+                ...layoutTransition,
+                opacity: { duration: 0.2 },
+              }}
             >
               <ExperienceDetails index={index} jobs={jobs} />
             </motion.div>

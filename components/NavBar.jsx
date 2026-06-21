@@ -14,13 +14,16 @@ import {
   useColorMode,
   useColorModeValue,
   useDisclosure,
-  Container,
   HStack,
 } from '@chakra-ui/react';
+import NextLink from 'next/link';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { FaMoon, FaSun } from 'react-icons/fa';
+import { useRouter } from 'next/router';
 import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
+
+import useLanguageToggle from '../i18n/useLanguageToggle';
 import { colors } from '../theme';
 import BRAFlagIcon from './icons/BRAFlagIcon';
 import EUAFlagIcon from './icons/EUAFlagIcon';
@@ -29,40 +32,44 @@ const Logo = () => {
   const logo = useColorModeValue('/logo.png', '/logo-dark.png');
 
   return (
-    <Box m="4">
-      <img
-        id="logo"
-        alt="Portfolio Logo"
-        src={logo}
-        width={30}
-        height={30}
-        onClick={scroll.scrollToTop}
-      />
-    </Box>
+    <button
+      type="button"
+      className="navbar-logo"
+      aria-label="Filipe Lehmann home"
+      onClick={() => scroll.scrollToTop({ duration: 500, smooth: true })}
+    >
+      <img alt="Filipe Lehmann logo" src={logo} width={28} height={28} />
+      <span className="navbar-logo-text">Filipe Lehmann</span>
+    </button>
   );
 };
 
 const MenuToggle = ({ isOpen, onOpen }) => {
-  const bg = useColorModeValue('gray.100', 'gray.700');
-  const hoverBg = useColorModeValue('gray.200', 'gray.600');
+  const border = useColorModeValue('gray.300', 'gray.600');
+  const hoverBg = useColorModeValue('gray.100', 'gray.700');
 
   return (
     <Box display={{ base: 'block', md: 'none' }}>
       <Button
         onClick={onOpen}
-        bg={bg}
+        variant="ghost"
+        border="1px solid"
+        borderColor={border}
+        borderRadius="0"
+        minW="40px"
+        h="40px"
+        p={0}
         _hover={{ bg: hoverBg }}
-        borderRadius="lg"
-        transition="all 0.3s ease"
-        _active={{
-          transform: 'scale(0.95)',
-        }}
+        aria-label={isOpen ? 'Close menu' : 'Open menu'}
       >
-        {isOpen ? <CloseIcon /> : <HamburgerIcon />}
+        {isOpen ? <CloseIcon boxSize={3} /> : <HamburgerIcon boxSize={4} />}
       </Button>
     </Box>
   );
 };
+
+const isInternalHref = (href) =>
+  Boolean(href && href.startsWith('/') && !href.startsWith('//'));
 
 const NavButtons = ({ size, onClose }) => {
   const { t, i18n } = useTranslation();
@@ -70,14 +77,11 @@ const NavButtons = ({ size, onClose }) => {
     colors.secondary.light,
     colors.secondary.dark
   );
-  // Hoist color mode value out of the map to avoid calling hooks inside loops
-  const hoverBgButton = useColorModeValue('gray.100', 'gray.700');
+  const hoverBg = useColorModeValue('gray.100', 'gray.700');
 
-  // Use state to handle client-side rendering
   const [isClient, setIsClient] = React.useState(false);
   const [navItems, setNavItems] = React.useState([]);
 
-  // Only update navigation items after component mounts on client
   React.useEffect(() => {
     setIsClient(true);
     const options = t('navbar', { returnObjects: true });
@@ -86,55 +90,75 @@ const NavButtons = ({ size, onClose }) => {
     }
   }, [t, i18n.resolvedLanguage]);
 
-  // For server-side rendering, use a simple placeholder that will be replaced on client
   if (!isClient) {
     return (
-      <>
-        <Button size={size} variant="ghost" visibility="hidden">
-          Loading
-        </Button>
-      </>
+      <Button size={size} variant="ghost" visibility="hidden">
+        Loading
+      </Button>
     );
   }
 
-  // Client-side rendering with actual navigation items
-  const btns = navItems.map((btn) => (
-    <Button
-      key={btn.label}
-      size={size}
-      variant="ghost"
-      onClick={onClose}
-      borderRadius="lg"
-      transition="all 0.3s ease"
-      _hover={{
-        bg: hoverBgButton,
-        color: secondary,
-        transform: 'translateY(-2px)',
-      }}
-      _active={{
-        transform: 'scale(0.95)',
-      }}
-      fontWeight="medium"
-    >
-      {btn.href ? (
+  const renderNavLabel = (btn) => {
+    if (btn.href && isInternalHref(btn.href)) {
+      return btn.label;
+    }
+
+    if (btn.href) {
+      return (
         <Link href={btn.href} isExternal>
           {btn.label}
         </Link>
-      ) : (
-        <ScrollLink
-          to={btn.section.toLowerCase()}
-          href={btn.href}
-          spy
-          smooth
-          offset={-70}
-          duration={500}
-          onClick={onClose}
-        >
-          {btn.label}
-        </ScrollLink>
-      )}
-    </Button>
-  ));
+      );
+    }
+
+    return (
+      <ScrollLink
+        to={btn.section.toLowerCase()}
+        spy
+        smooth
+        offset={-88}
+        duration={500}
+        onClick={onClose}
+      >
+        {btn.label}
+      </ScrollLink>
+    );
+  };
+
+  const btns = navItems.map((btn) => {
+    const isInternalLink = btn.href && isInternalHref(btn.href);
+
+    return (
+      <Button
+        key={btn.label}
+        as={isInternalLink ? NextLink : undefined}
+        href={isInternalLink ? btn.href : undefined}
+        size={size}
+        variant="ghost"
+        onClick={isInternalLink ? onClose : undefined}
+        className="navbar-link"
+        borderRadius="0"
+        fontFamily="var(--font-mono)"
+        fontSize="11px"
+        letterSpacing="0.08em"
+        textTransform="uppercase"
+        fontWeight="600"
+        px={3}
+        h="36px"
+        transition="opacity 0.15s ease"
+        _hover={{
+          bg: hoverBg,
+          color: secondary,
+          transform: 'none',
+        }}
+        _active={{
+          transform: 'none',
+        }}
+      >
+        {renderNavLabel(btn)}
+      </Button>
+    );
+  });
 
   return <>{btns}</>;
 };
@@ -144,8 +168,8 @@ const ColorModeButton = ({ mr }) => {
   const SwitchIcon = useColorModeValue(FaMoon, FaSun);
   const nextMode = useColorModeValue('dark', 'light');
   const { i18n } = useTranslation();
-  const bg = useColorModeValue('gray.100', 'gray.700');
-  const hoverBg = useColorModeValue('gray.200', 'gray.600');
+  const border = useColorModeValue('gray.300', 'gray.600');
+  const hoverBg = useColorModeValue('gray.100', 'gray.700');
 
   return (
     <Tooltip
@@ -161,24 +185,27 @@ const ColorModeButton = ({ mr }) => {
       }
     >
       <IconButton
-        size="md"
-        fontSize="lg"
+        size="sm"
+        fontSize="md"
         aria-label={
           i18n.resolvedLanguage === 'pt'
             ? `Alternar para modo ${nextMode}`
             : `Toggle ${nextMode} mode`
         }
         variant="ghost"
-        bg={bg}
+        border="1px solid"
+        borderColor={border}
+        borderRadius="0"
+        minW="40px"
+        h="40px"
         _hover={{ bg: hoverBg }}
         color="current"
         onClick={toggleColorMode}
         icon={<SwitchIcon />}
         style={{ marginRight: mr }}
-        borderRadius="lg"
-        transition="all 0.3s ease"
+        transition="opacity 0.15s ease"
         _active={{
-          transform: 'scale(0.95)',
+          transform: 'none',
         }}
       />
     </Tooltip>
@@ -187,25 +214,15 @@ const ColorModeButton = ({ mr }) => {
 
 const LanguageButton = ({ mr }) => {
   const { i18n } = useTranslation();
-  // Use state to track client-side language to prevent hydration mismatch
-  const [currentLanguage, setCurrentLanguage] = React.useState('en');
+  const { currentLanguage, toggleLanguage } = useLanguageToggle();
   const [isClient, setIsClient] = React.useState(false);
-  const bg = useColorModeValue('gray.100', 'gray.700');
-  const hoverBg = useColorModeValue('gray.200', 'gray.600');
+  const border = useColorModeValue('gray.300', 'gray.600');
+  const hoverBg = useColorModeValue('gray.100', 'gray.700');
 
-  // Only update language state after component mounts on client
   React.useEffect(() => {
     setIsClient(true);
-    setCurrentLanguage(i18n.resolvedLanguage || 'en');
   }, [i18n.resolvedLanguage]);
 
-  const handleChangeLanguage = (lng) => {
-    const newLang = lng === 'pt' ? 'en' : 'pt';
-    i18n.changeLanguage(newLang);
-    setCurrentLanguage(newLang);
-  };
-
-  // Only render the actual flag icon on client-side to prevent hydration mismatch
   const flag =
     isClient && (currentLanguage === 'pt' ? <BRAFlagIcon /> : <EUAFlagIcon />);
 
@@ -218,17 +235,20 @@ const LanguageButton = ({ mr }) => {
             : 'Switch language'
         }
         variant="ghost"
-        bg={bg}
+        border="1px solid"
+        borderColor={border}
+        borderRadius="0"
+        minW="40px"
+        h="40px"
         _hover={{ bg: hoverBg }}
         color="current"
-        onClick={() => handleChangeLanguage(currentLanguage)}
+        onClick={toggleLanguage}
         icon={flag}
         style={{ marginRight: mr }}
         isLoading={!isClient}
-        borderRadius="lg"
-        transition="all 0.3s ease"
+        transition="opacity 0.15s ease"
         _active={{
-          transform: 'scale(0.95)',
+          transform: 'none',
         }}
       />
     </Tooltip>
@@ -238,7 +258,7 @@ const LanguageButton = ({ mr }) => {
 const MenuLinks = ({ onClose }) => (
   <HStack
     display={{ base: 'none', sm: 'none', md: 'flex' }}
-    spacing="24px"
+    spacing="4px"
     alignItems="center"
   >
     <NavButtons size="sm" onClose={onClose} />
@@ -250,13 +270,13 @@ const MenuLinks = ({ onClose }) => (
 const NavMenu = ({ isOpen, onClose }) => (
   <Drawer placement="right" onClose={onClose} isOpen={isOpen}>
     <DrawerOverlay>
-      <DrawerContent>
+      <DrawerContent borderRadius="0">
         <DrawerBody>
           <Stack
             alignItems="center"
             justifyContent="center"
             direction={['column']}
-            spacing="24px"
+            spacing="16px"
             mt="20vh"
           >
             <NavButtons size="lg" onClose={onClose} />
@@ -270,20 +290,19 @@ const NavMenu = ({ isOpen, onClose }) => (
 );
 
 export default function Navbar() {
+  const { pathname } = useRouter();
+  const isCvPage = pathname === '/cv';
   const primary = useColorModeValue(
     colors.primary07.light,
     colors.primary07.dark
   );
   const shadowColor = useColorModeValue(
     'rgba(0, 0, 0, 0.08)',
-    'rgba(59, 130, 246, 0.12)'
+    'rgba(0, 0, 0, 0.35)'
   );
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [scrollProgress, setScrollProgress] = useState(0); // 0 to 1: how close to bottom
-  const [lastScrollY, setLastScrollY] = useState(0);
-
-  // const controls = useAnimation();
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   const handleScroll = useCallback(() => {
     const { scrollY } = window;
@@ -296,8 +315,7 @@ export default function Navbar() {
       progress = 1 - distanceFromBottom / bottomThreshold;
     }
     setScrollProgress(progress);
-    setLastScrollY(scrollY);
-  }, [lastScrollY]);
+  }, []);
 
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
@@ -310,47 +328,52 @@ export default function Navbar() {
   const translateScroll = -148 * scrollProgress;
 
   return (
-    <>
-      <div
-        id="navbar"
-        style={{
-          position: 'fixed',
-          opacity: 0,
-          top: 18,
-          left: 0,
-          right: 0,
-          zIndex: 97,
-          display: 'flex',
-          justifyContent: 'center',
-          width: '100vw',
-          boxSizing: 'border-box',
-          transform: `translateY(${translateScroll}%)`,
-        }}
+    <div
+      id="navbar"
+      className="navbar-wrap"
+      style={{
+        position: 'fixed',
+        opacity: isCvPage ? 1 : 0,
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 97,
+        display: 'flex',
+        justifyContent: 'center',
+        width: '100vw',
+        boxSizing: 'border-box',
+        transform: `translateY(${translateScroll}%)`,
+        padding: '12px 24px 0',
+      }}
+    >
+      <Box
+        className="navbar"
+        as="header"
+        bg={primary}
+        boxShadow={`0 8px 30px ${shadowColor}`}
+        border="1px solid"
+        borderColor={border}
+        backdropFilter="blur(10px)"
+        zIndex={99}
+        maxW="1200px"
+        w="100%"
       >
-        <Box
-          className="navbar"
-          // as="header"
-          bg={primary}
-          boxShadow={`0 4px 20px ${shadowColor}`}
-          borderBottom="1px solid"
-          borderColor={border}
-          backdropFilter="blur(13px)"
-          zIndex={99}
+        <HStack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+          px={{ base: 2, md: 4 }}
+          py={2}
+          minH="52px"
+          gap={3}
         >
-          <Container maxW="container.xl">
-            <HStack
-              direction="row"
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              <Logo />
-              <MenuLinks onClose={onClose} />
-              <NavMenu isOpen={isOpen} onClose={onClose} />
-              <MenuToggle isOpen={isOpen} onOpen={onOpen} />
-            </HStack>
-          </Container>
-        </Box>
-      </div>
-    </>
+          <Logo />
+          <Box flex="1" />
+          <MenuLinks onClose={onClose} />
+          <NavMenu isOpen={isOpen} onClose={onClose} />
+          <MenuToggle isOpen={isOpen} onOpen={onOpen} />
+        </HStack>
+      </Box>
+    </div>
   );
 }

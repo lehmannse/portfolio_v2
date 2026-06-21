@@ -1,8 +1,9 @@
 .card {
   position: relative;
-  border-radius: var(--chakra-radii-lg);
+  border-radius: 0;
   overflow: hidden;
   transition: all ease 0.3s;
+  isolation: isolate;
 }
 
 /* fractal noise overlay */
