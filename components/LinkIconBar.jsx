@@ -5,6 +5,7 @@ import {
   Tooltip,
   useColorModeValue,
 } from '@chakra-ui/react';
+import NextLink from 'next/link';
 import React from 'react';
 import { BiLink } from 'react-icons/bi';
 import { FaDev, FaLinkedin, FaTelegram, FaYoutube } from 'react-icons/fa';
@@ -28,32 +29,58 @@ const icons = {
   figma: IoLogoFigma,
 };
 
-const LinkIcon = ({ index, color, onHoverColor, url, label, icon }) => (
-  <Tooltip label={label} aria-label={`${label}-tooltip`} key={`link-${index}`}>
-    <div style={{ cursor: !url ? 'not-allowed' : 'pointer' }}>
-      <Link
-        aria-label={`Open link to ${url}`}
-        display="flex"
-        href={url}
-        disabled={!url}
-        _disabled={{
-          opacity: 0.5,
-          textDecoration: 'none',
-          pointerEvents: 'none',
-        }}
-        isExternal
-        alignItems="center"
-      >
-        <Icon
-          as={icons[icon]}
-          fontSize="xl"
-          color={color}
-          _hover={{ color: onHoverColor }}
-        />
-      </Link>
-    </div>
-  </Tooltip>
-);
+const isInternalLink = (url) =>
+  Boolean(url && url.startsWith('/') && !url.startsWith('//'));
+
+const LinkIcon = ({ index, color, onHoverColor, url, label, icon }) => {
+  const iconElement = (
+    <Icon
+      as={icons[icon]}
+      fontSize="xl"
+      color={color}
+      _hover={{ color: onHoverColor }}
+    />
+  );
+
+  return (
+    <Tooltip
+      label={label}
+      aria-label={`${label}-tooltip`}
+      key={`link-${index}`}
+    >
+      <div style={{ cursor: !url ? 'not-allowed' : 'pointer' }}>
+        {isInternalLink(url) ? (
+          <NextLink href={url} passHref legacyBehavior>
+            <Link
+              href={url}
+              aria-label={`Open ${label}`}
+              display="flex"
+              alignItems="center"
+            >
+              {iconElement}
+            </Link>
+          </NextLink>
+        ) : (
+          <Link
+            aria-label={`Open link to ${url}`}
+            display="flex"
+            href={url}
+            disabled={!url}
+            _disabled={{
+              opacity: 0.5,
+              textDecoration: 'none',
+              pointerEvents: 'none',
+            }}
+            isExternal
+            alignItems="center"
+          >
+            {iconElement}
+          </Link>
+        )}
+      </div>
+    </Tooltip>
+  );
+};
 
 const LinkIconBar = ({ links, color, onHoverColor, ...props }) => {
   const iconColor =
