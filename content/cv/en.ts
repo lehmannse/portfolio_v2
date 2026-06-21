@@ -1,0 +1,132 @@
+import { CvContent } from './types';
+
+// Source of truth: public/resume.pdf (LinkedIn export).
+const cvEn: CvContent = {
+  name: 'Filipe Lehmann Pereira',
+  headline: 'Frontend Engineer',
+  location: 'Curitiba, Paraná, Brazil',
+  contact: {
+    phone: '+55 33 99159-0880',
+    email: 'filipelehmannp@gmail.com',
+    linkedin: 'linkedin.com/in/filipe-lehmann-pereira/',
+    portfolio: 'filipelehmann.vercel.app',
+  },
+  summary:
+    "I'm a frontend engineer with over 3 years of experience working primarily in the sectors of forestry and real estate, building scalable, responsive web applications using React, Next.js, and TypeScript, with strong technical skills, attention to detail, and a proven track record delivering SaaS platforms, design systems, and data-driven UIs in Agile, cross-functional, and remote-first international teams. I helped my projects integrate seamlessly into clients’ daily routines and enabled monthly savings of thousands of Brazilian reais by delivering solutions grounded in strong component-based architecture, UI/UX principles, robust state management (Zustand, Redux), and end-to-end testing (Cypress, Jest). I want to continue building meaningful solutions and contributing to projects with purpose, especially alongside curious, open-minded collaborators. I'm fluent in English and Portuguese, and conversational in German.",
+  skills: [
+    'React',
+    'Next.js',
+    'TypeScript',
+    'JavaScript',
+    'Node.js',
+    'HTML',
+    'CSS',
+    'SCSS',
+    'Tailwind',
+    'Responsive Design',
+    'State management libraries',
+    'GraphQL',
+    'Performance optimization',
+    'Cross-browser compatibility',
+    'D3',
+    'Recharts',
+    'Google Maps',
+    'Figma',
+    'UI/UX',
+    'Design Patterns',
+    'Selenium',
+    'Cypress',
+    'Jest',
+    'Git & GitHub',
+    'Agile',
+  ],
+  languages: [
+    { name: 'English', level: 'Fluent (C2)' },
+    { name: 'Portuguese', level: 'Native' },
+    { name: 'German', level: 'Conversational proficiency (B1)' },
+  ],
+  certifications: [],
+  experience: [
+    {
+      company: 'Pixlog',
+      title: 'Software Engineer',
+      duration: 'Jun 2024 - Jun 2025',
+      technologies: 'React, Next.js, TypeScript, Tailwind, Zustand, TanStack Table, Google Maps',
+      bullets: [
+        'Spearheaded frontend development for a B2B SaaS web platform using React, Next.js, TypeScript, and Tailwind, offering a management solution for processing data collected by operators, enabling clients to seamlessly integrate the platform into their daily office routine and workflow.',
+        'Built an elegant dashboard with Google Maps, dynamic lists with TanStack Table, state management structures with Zustand, and several reusable components, facilitating rapid prototyping of new features and maintenance with automated testing.',
+        "Refactored the platform's PDF generation system, enabling cost savings of thousands of Brazilian Reais per month and increasing the reliability of the company's infrastructure.",
+        'Internationalized the platform in 3 languages, enabling better commercial work, support, and access for new clients from Paraguay and Argentina.',
+      ],
+    },
+    {
+      company: 'Freelance',
+      title: 'Freelance Software Engineer',
+      duration: 'Sep 2023 - Jul 2024',
+      bullets: [
+        'Improved my client’s platform to convey more authority, convert more leads, and better manage customer data, leading to greater productivity, user satisfaction, and revenue.',
+        'Designed and implemented layouts so the client could create and deliver their courses within their platform.',
+        'Assisted with the client’s vision for the evolution of their platform, creating roadmaps to present and implement desired changes in sensible steps.',
+        'Provided insight and helped the customer cut relevant costs monthly by reviewing their tool subscriptions.',
+      ],
+    },
+    {
+      company: 'Hype Empreendimentos',
+      title: 'Software Engineer',
+      duration: 'Apr 2022 - Oct 2023',
+      technologies: 'React, Next.js, TypeScript, D3.js, GraphQL, Cypress, Jest, GitLab',
+      bullets: [
+        'Pioneered a SaaS platform for a financial technology spinoff (CapLink) by designing and deploying the first version of a platform that streamlined multi-million Brazilian Real real estate credit for large-scale construction projects using React and Next.js.',
+        'Accelerated a complex credit approval pipeline by developing the frontend for a financial platform that digitized a previously slow and bureaucratic process, achieved by using D3.js to visually represent the pipeline steps, which significantly improved the user experience and contributed to faster client adoption.',
+        "Built the foundation for a scalable product by architecting the platform's user interface with a modular, component-based design, using TypeScript to ensure type safety and applying principles of Clean Architecture.",
+        "Implemented the frontend's GraphQL integration with backend services, collaborating to define schemas and consume data to build dynamic features.",
+        'Contributed to CI/CD workflows and version control using Git and GitLab, supporting continuous delivery and ensuring deployment reliability through end-to-end testing with Cypress and unit testing with Jest.',
+        'Collaborated closely with multidisciplinary Agile teams, with engineers, analysts, and designers, to deliver features aligned with business goals and user needs.',
+      ],
+    },
+    {
+      company: 'Guarani Sistemas',
+      title: 'Software Engineering Intern',
+      duration: 'May 2022 - Nov 2023',
+      technologies: 'Vue.js, HTML, CSS, JavaScript, Jira, GitLab',
+      bullets: [
+        'Contributed to the front-end development of a business web application using Vue.js, HTML, CSS, and JavaScript, improving UI consistency and responsiveness.',
+        'Resolved low- to medium-priority bugs and feature requests, enhancing user experience and overall system stability.',
+        'Created detailed user stories for features beyond the MVP, supporting backlog grooming and sprint planning.',
+        'Designed mobile-first mockups and UI flows in collaboration with product and design teams, ensuring accessibility and responsiveness across devices.',
+        'Participated in daily Scrum meetings, tracked tasks in Jira, and collaborated using GitLab for version control and code reviews.',
+        'Gained hands-on experience in Agile methodologies, UI/UX design, and collaborative software delivery in a production environment.',
+      ],
+    },
+    {
+      company: 'Volunteers for Ukraine',
+      title: 'Software Engineer',
+      duration: 'Mar 2024 - Jul 2024',
+      technologies: 'React, TypeScript, Node.js, Atomic Design',
+      bullets: [
+        'Took part in the front-end development of a React web application for a project on crisis management to support the Ukrainian humanitarian crisis.',
+        'Worked on the UI/UX responsive design and coding of layouts for Projects, Organizations, and Volunteers sections.',
+        'Used the Atomic design pattern to create project components and reusable, easy-to-maintain code.',
+        'Worked with TypeScript clients generated via Node.js tooling for API integration.',
+      ],
+    },
+  ],
+  education: [
+    {
+      school: 'Instituto Federal de Minas Gerais',
+      degree: 'Bachelor of Computer Engineering',
+      duration: '2017 - 2022',
+    },
+  ],
+  labels: {
+    summary: 'Summary',
+    experience: 'Experience',
+    education: 'Education',
+    skills: 'Skills',
+    languages: 'Languages',
+    certifications: 'Certifications',
+    print: 'Print / Save as PDF',
+  },
+};
+
+export default cvEn;
