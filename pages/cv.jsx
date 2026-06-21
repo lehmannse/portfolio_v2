@@ -4,7 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-import useLanguageToggle from '../hooks/useLanguageToggle';
+import useLanguageToggle from '../i18n/useLanguageToggle';
 import styles from '../styles/pages/cv.module.css';
 
 export default function CvPage() {

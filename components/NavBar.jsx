@@ -22,7 +22,7 @@ import { FaMoon, FaSun } from 'react-icons/fa';
 import { useRouter } from 'next/router';
 import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll';
 
-import useLanguageToggle from '../hooks/useLanguageToggle';
+import useLanguageToggle from '../i18n/useLanguageToggle';
 import { colors } from '../theme';
 import BRAFlagIcon from './icons/BRAFlagIcon';
 import EUAFlagIcon from './icons/EUAFlagIcon';
