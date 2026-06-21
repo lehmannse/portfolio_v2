@@ -16,7 +16,6 @@ import { useTranslation } from 'react-i18next';
 
 import Footer from '../components/Footer';
 import FractalFilterDefs from '../components/FractalFilterDefs';
-import JobTitleAccent from '../components/JobTitleAccent';
 import NavBar from '../components/NavBar';
 import stylesSection from '../styles/components/SectionContainer.module.css';
 import theme from '../theme';
@@ -93,6 +92,7 @@ const PageWrapper = ({
   description,
   path,
   showIntro = true,
+  showNavbar = true,
 }) => {
   const gradientBgTop = useColorModeValue(
     `linear-gradient(0deg, #fff 10%, rgb(186 230 253 / 0.8) 100%)`,
@@ -220,7 +220,7 @@ const PageWrapper = ({
         </>
       )}
       <SiteHead title={title} description={description} path={path} />
-      <NavBar />
+      {showNavbar ? <NavBar /> : null}
 
       {showIntro ? (
         <div
@@ -261,7 +261,6 @@ const PageWrapper = ({
               {t('landing.job')}
             </strong>
           </div>
-          <JobTitleAccent />
           <div
             id="loading"
             style={{
@@ -342,6 +341,7 @@ function App({ Component, pageProps }) {
           description={meta.description}
           path={pathname}
           showIntro={!isCvPage}
+          showNavbar={!isCvPage}
         >
           <Component {...pageProps} />
         </PageWrapper>
@@ -356,6 +356,7 @@ function App({ Component, pageProps }) {
         description={meta.description}
         path={pathname}
         showIntro={!isCvPage}
+        showNavbar={!isCvPage}
       >
         <Component {...pageProps} />
         {!isCvPage ? <FractalFilterDefs /> : null}

@@ -33,14 +33,15 @@ function getTileGeometry(r, gap) {
 }
 
 export default function HexagonPattern({
-  radius = 28,
-  gap = 6,
-  x = -1,
-  y = -1,
+  radius = 24,
+  gap = 0,
+  x = 0,
+  y = 0,
   stroke = 'currentColor',
   strokeOpacity = 0.18,
   className = '',
   style = {},
+  masked = false,
 }) {
   const id = useId();
   const { tileW, tileH, centers } = getTileGeometry(radius, gap);
@@ -55,6 +56,14 @@ export default function HexagonPattern({
         inset: 0,
         width: '100%',
         height: '100%',
+        ...(masked
+          ? {
+              maskImage:
+                'linear-gradient(to bottom right, white, transparent, transparent)',
+              WebkitMaskImage:
+                'linear-gradient(to bottom right, white, transparent, transparent)',
+            }
+          : {}),
         ...style,
       }}
     >

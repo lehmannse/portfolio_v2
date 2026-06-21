@@ -4,45 +4,37 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 
 import links from '../../data/contactLinks';
+import BlueprintPattern from '../BlueprintPattern';
 import LinkIconBar from '../LinkIconBar';
 import SectionContainer from '../SectionContainer';
 
 export default function Contact() {
   const { t, i18n } = useTranslation();
   return (
-    <SectionContainer
-      id="contact"
-      name="contact"
-      headerText={
-        i18n.resolvedLanguage === 'pt' ? 'Entre em Contato' : 'Contact Me'
-      }
-      style={{ minHeight: '80vh' }}
-      useHeaderStyle
-    >
-      <Flex
-        width={{ base: '75%', sm: '50%' }}
-        justifyContent="center"
-        textAlign="center"
-        flexDirection="column"
-        px={4}
+    <div style={{ position: 'relative' }}>
+      <BlueprintPattern position="bottom" />
+      <SectionContainer
+        id="contact"
+        name="contact"
+        headerText={
+          i18n.resolvedLanguage === 'pt' ? 'Entre em Contato' : 'Contact Me'
+        }
+        style={{ minHeight: '80vh', position: 'relative', zIndex: 1 }}
+        useHeaderStyle
       >
-        <Text fontSize="xl" m="auto">
-          {t('contact')}
-        </Text>
-        {/* <Text fontSize="xl" m="auto">
-          
-        </Text> */}
-        <LinkIconBar pt={12} links={links} />
-        {/* <Button
-          as={Link}
-          leftIcon={<EmailIcon />}
-          href="mailto:filipelehmannp@gmail.com"
-          m="auto"
-          mt={6}
+        <Flex
+          width={{ base: '75%', sm: '50%' }}
+          justifyContent="center"
+          textAlign="center"
+          flexDirection="column"
+          px={4}
         >
-          Email
-        </Button> */}
-      </Flex>
-    </SectionContainer>
+          <Text fontSize="xl" m="auto">
+            {t('contact')}
+          </Text>
+          <LinkIconBar pt={12} links={links} />
+        </Flex>
+      </SectionContainer>
+    </div>
   );
 }

@@ -19,6 +19,7 @@ import { useTranslation } from 'react-i18next';
 
 import styles from '../styles/components/ExperienceOverview.module.css';
 import { colors } from '../theme';
+import HexagonPattern from './HexagonPattern';
 
 const ExperienceSelect = ({ expIndex, setIndex, jobs }) => (
   <Select
@@ -144,6 +145,8 @@ export default function ExperienceOverview() {
     'rgba(59, 130, 246, 0.2)'
   );
 
+  const hexStroke = useColorModeValue('#1ca7d0', '#90cdf4');
+
   const { t } = useTranslation();
 
   const jobs = t('jobs', { returnObjects: true });
@@ -169,7 +172,7 @@ export default function ExperienceOverview() {
       <Flex
         as={motion.div}
         layout
-        className={`${styles.card} ${styles['bg-noise']}`}
+        className={styles.card}
         direction={{ base: 'column', md: 'row' }}
         justifyContent="center"
         alignItems={{ base: 'center', md: 'flex-start' }}
@@ -190,6 +193,13 @@ export default function ExperienceOverview() {
         }}
       >
         {/* new layers */}
+        <HexagonPattern
+          radius={22}
+          gap={0}
+          stroke={hexStroke}
+          strokeOpacity={0.2}
+          masked
+        />
         <div className={styles.backdrop} />
         <div className={styles.filter} />
         <div className={styles.shadow} />

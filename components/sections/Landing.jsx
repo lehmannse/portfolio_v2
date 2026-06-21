@@ -10,9 +10,10 @@ import { Link } from 'react-scroll';
 import links from '../../data/footerLinks';
 import styles from '../../styles/sections/Landing.module.css';
 import { colors } from '../../theme';
-import JobTitleAccent from '../JobTitleAccent';
+import BlueprintPattern from '../BlueprintPattern';
 import LinkIconBar from '../LinkIconBar';
 import SectionContainer from '../SectionContainer';
+import TypewriterJobTitle from '../TypewriterJobTitle';
 
 export default function Landing() {
   const primary = useColorModeValue(colors.primary.dark, colors.primary.light);
@@ -35,19 +36,24 @@ export default function Landing() {
       >
         <span className="landing-intro">{t('landing.intro')}</span>{' '}
         <strong className="landing-job-title" style={{ color: secondary }}>
-          {t('landing.job')}
+          <TypewriterJobTitle text={t('landing.job')} accentColor={secondary} />
         </strong>
-        <JobTitleAccent />
       </h1>
     </motion.div>
   );
 
   return (
-    <div>
+    <div style={{ position: 'relative' }}>
+      <BlueprintPattern position="top" />
       <SectionContainer
         id="landing"
         name="landing"
-        style={{ height: '100vh', margin: '0' }}
+        style={{
+          height: '100vh',
+          margin: '0',
+          position: 'relative',
+          zIndex: 1,
+        }}
       >
         {header}
         <Flex

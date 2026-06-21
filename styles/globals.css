@@ -101,6 +101,9 @@ a {
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.18);
 }
 
-.link {
-  color: #077bff i !important;
+@media print {
+  #navbar,
+  .navbar-wrap {
+    display: none !important;
+  }
 }
